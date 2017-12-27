@@ -27,9 +27,11 @@ const animateSnake=function() {
     drawFood(food);
   }
   if(snake.isEatingItself()){
-    alert("eating");
+    clearInterval(animator);
   }
-  if(isHittedWall(snake)) alert("hitted");
+  if(isHittedWall(snake)){
+    clearInterval(animator);
+  }
 }
 
 const changeSnakeDirection=function(event) {
