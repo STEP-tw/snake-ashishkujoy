@@ -41,7 +41,7 @@ const drawFood=function(food) {
 }
 
 const showLoadPageOption = function(pagePath) {
-  let grid=document.getElementById("grid");
+  let grid=document.getElementById("hidden_tail");
   let button = document.createElement("BUTTON");
   button.innerHTML=`<a href=${pagePath}>Restart</a>`
   grid.appendChild(button);
