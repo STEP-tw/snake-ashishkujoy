@@ -1,4 +1,5 @@
 
 ✔ to check snake is eating itself. @done(2017-12-27 11:27)
 ✔ to check is snake hitted the wall. @done(2017-12-27 11:44)
-☐ to give user a chance to restart the game.
+✔ to give user a chance to restart the game. @done(2017-12-27 12:43)
+☐ to check if code can be made more eligent.

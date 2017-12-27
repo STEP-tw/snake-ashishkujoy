@@ -5,13 +5,17 @@ let numberOfCols=120;
 
 let animator=undefined;
 
-const isHittedWall = function(snake){
+const isHittedWall = function(snake) {
   let snakeHead = snake.getHead();
   let arbitarySnakeHeadId = snakeHead.getCoord().join("_");
   let arbitarySnakeHeadElement = document.getElementById(arbitarySnakeHeadId);
   if(!arbitarySnakeHeadElement)
     return true;
   return false;
+}
+
+const isGameTerminated = function(snake) {
+  return snake.isEatingItself() || isHittedWall(snake);
 }
 
 const animateSnake=function() {
@@ -26,13 +30,9 @@ const animateSnake=function() {
     createFood(numberOfRows,numberOfCols);
     drawFood(food);
   }
-  if(snake.isEatingItself()){
+  if(isGameTerminated(snake)){
     clearInterval(animator);
-    showLoadPageOption("./index.html");
-  }
-  if(isHittedWall(snake)){
-    clearInterval(animator);
-    showLoadPageOption("./index.html");
+    return showLoadPageOption("./index.html");
   }
 }
 
