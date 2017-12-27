@@ -28,9 +28,11 @@ const animateSnake=function() {
   }
   if(snake.isEatingItself()){
     clearInterval(animator);
+    showLoadPageOption("./index.html");
   }
   if(isHittedWall(snake)){
     clearInterval(animator);
+    showLoadPageOption("./index.html");
   }
 }
 

@@ -39,3 +39,10 @@ const drawSnake=function(snake) {
 const drawFood=function(food) {
   paintCell(food,"food");
 }
+
+const showLoadPageOption = function(pagePath) {
+  let grid=document.getElementById("grid");
+  let button = document.createElement("BUTTON");
+  button.innerHTML=`<a href=${pagePath}>Restart</a>`
+  grid.appendChild(button);
+}
