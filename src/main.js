@@ -5,20 +5,28 @@ let numberOfCols=120;
 
 let animator=undefined;
 
-const isHittedWall = function(snake) {
-  let snakeHead = snake.getHead();
-  let arbitarySnakeHeadId = snakeHead.getCoord().join("_");
-  let arbitarySnakeHeadElement = document.getElementById(arbitarySnakeHeadId);
-  if(!arbitarySnakeHeadElement)
-    return true;
-  return false;
+const idNotExist = function(id) {
+  let arbitaryElement = document.getElementById(id);
+  return arbitaryElement == null;
+}
+
+const isHittedWall = function(snakeHead) {
+  let nextPos = snakeHead.next();
+  let arbitarySnakeHeadId = nextPos.getCoord().join("_");
+  return idNotExist(arbitarySnakeHeadId);
 }
 
 const isGameTerminated = function(snake) {
-  return snake.isEatingItself() || isHittedWall(snake);
+  let snakeHead = snake.getHead();
+  return snake.isEatingItself() || isHittedWall(snakeHead);
 }
 
 const animateSnake=function() {
+  if(isGameTerminated(snake)) {
+    clearInterval(animator);
+    return
+    showLoadPageOption("./index.html");
+  }
   let oldHead=snake.getHead();
   let oldTail=snake.move();
   let head=snake.getHead();
@@ -29,10 +37,6 @@ const animateSnake=function() {
     snake.grow();
     createFood(numberOfRows,numberOfCols);
     drawFood(food);
-  }
-  if(isGameTerminated(snake)){
-    clearInterval(animator);
-    return showLoadPageOption("./index.html");
   }
 }
 
