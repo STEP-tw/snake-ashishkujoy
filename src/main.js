@@ -17,6 +17,9 @@ const animateSnake=function() {
     createFood(numberOfRows,numberOfCols);
     drawFood(food);
   }
+  if(snake.isEatingItself()){
+    alert("eating");
+  }
 }
 
 const changeSnakeDirection=function(event) {
