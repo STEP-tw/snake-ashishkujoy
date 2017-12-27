@@ -5,6 +5,15 @@ let numberOfCols=120;
 
 let animator=undefined;
 
+const isHittedWall = function(snake){
+  let snakeHead = snake.getHead();
+  let arbitarySnakeHeadId = snakeHead.getCoord().join("_");
+  let arbitarySnakeHeadElement = document.getElementById(arbitarySnakeHeadId);
+  if(!arbitarySnakeHeadElement)
+    return true;
+  return false;
+}
+
 const animateSnake=function() {
   let oldHead=snake.getHead();
   let oldTail=snake.move();
@@ -20,6 +29,7 @@ const animateSnake=function() {
   if(snake.isEatingItself()){
     alert("eating");
   }
+  if(isHittedWall(snake)) alert("hitted");
 }
 
 const changeSnakeDirection=function(event) {
